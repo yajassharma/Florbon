@@ -1,11 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FLOWERS, FlowerType } from '../data/mockData';
 import { useStore } from '../store/useStore';
-import { Plus, Search, ArrowRight, Sparkles, ChevronLeft } from 'lucide-react';
+import { Plus, Search, ArrowRight, Sparkles, ChevronLeft, HelpCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { FlowerCard } from '../components/FlowerCard';
 import { CategoryCard } from '../components/CategoryCard';
+import { HowItWorksModal } from '../components/HowItWorksModal';
+
+const HERO_SLIDES = [
+  {
+    image: 'https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1000&auto=format&fit=crop',
+    heading: "Create a Bouquet That's Truly Yours...",
+    subheading: "Pick Flowers. Style It. Send It."
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1000&auto=format&fit=crop',
+    heading: "Elegance in Every Petal",
+    subheading: "Discover our premium collection of seasonal blooms."
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1000&auto=format&fit=crop',
+    heading: "Crafted for Your Moments",
+    subheading: "Personalized arrangements that speak from the heart."
+  }
+];
 
 const CATEGORIES: { id: FlowerType; label: string; image: string }[] = [
   { id: 'rose', label: 'Roses', image: 'https://ik.imagekit.io/b6vbf9pul/Crimson%20Rose.png?updatedAt=1772750210117' },
@@ -21,8 +40,17 @@ const CATEGORIES: { id: FlowerType; label: string; image: string }[] = [
 export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState<FlowerType | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [isHowItWorksOpen, setIsHowItWorksOpen] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const addFlower = useStore((state) => state.addFlower);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
 
   const filteredFlowers = FLOWERS.filter((flower) => {
     const matchesCategory = !selectedCategory || flower.type === selectedCategory;
@@ -35,25 +63,69 @@ export default function Home() {
   );
 
   return (
-    <div className="bg-stone-50 min-h-full pb-24">
+    <div className="relative min-h-full pb-24">
       {/* Hero Section */}
-      <div className="relative h-72 w-full overflow-hidden rounded-b-[2.5rem] shadow-sm">
-        <img 
-          src="https://images.unsplash.com/photo-1563241527-3004b7be0ffd?q=80&w=1000&auto=format&fit=crop" 
-          alt="Beautiful floral arrangement" 
-          className="absolute inset-0 w-full h-full object-cover"
-          referrerPolicy="no-referrer"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
-        
-        <div className="absolute bottom-0 left-0 w-full p-8 text-white">
+      <div 
+        className="relative h-72 w-full overflow-hidden rounded-b-[2.5rem] shadow-sm bg-stone-100 isolate"
+        style={{ WebkitMaskImage: '-webkit-radial-gradient(white, black)' }}
+      >
+        <AnimatePresence initial={false} mode="popLayout">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            key={currentSlide}
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-100%' }}
+            transition={{ 
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.2 }
+            }}
+            className="absolute inset-0 w-full h-full"
           >
-            <h1 className="text-4xl font-serif leading-tight mb-2">Design Your<br/><i className="font-light">Perfect Bouquet</i></h1>
+            <img 
+              src={HERO_SLIDES[currentSlide].image} 
+              alt={`Hero ${currentSlide}`} 
+              className="absolute inset-0 w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent" />
+            
+            <div className="absolute bottom-0 left-0 w-full p-8 text-white">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <h1 className="text-4xl font-serif font-bold leading-tight mb-2">
+                  {HERO_SLIDES[currentSlide].heading.split('...')[0]}
+                  {HERO_SLIDES[currentSlide].heading.includes('...') && '...'}
+                  <br/>
+                  <i className="font-light text-xl">{HERO_SLIDES[currentSlide].subheading}</i>
+                </h1>
+              </motion.div>
+            </div>
           </motion.div>
+        </AnimatePresence>
+        
+        {/* How it works link */}
+        <button 
+          onClick={() => setIsHowItWorksOpen(true)}
+          className="absolute top-6 right-6 px-3 py-1.5 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center gap-1.5 text-black text-[10px] font-medium tracking-wide hover:bg-white/30 transition-all active:scale-95 z-20"
+        >
+          <HelpCircle className="w-3.5 h-3.5" />
+          How it works
+        </button>
+
+        {/* Carousel Dots */}
+        <div className="absolute bottom-8 right-8 flex gap-2 z-20">
+          {HERO_SLIDES.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentSlide(i)}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+                currentSlide === i ? 'bg-white w-4' : 'bg-white/40'
+              }`}
+            />
+          ))}
         </div>
       </div>
 
@@ -70,10 +142,10 @@ export default function Home() {
           </div>
           <input
             type="text"
-            placeholder="Search for peonies, roses..."
+            placeholder="Search flowers to add to your bouquet"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full py-2 bg-transparent text-stone-800 placeholder:text-stone-400 focus:outline-none text-sm"
+            className="w-full py-2 bg-transparent text-stone-600 placeholder:text-stone-400 focus:outline-none text-xs"
           />
         </motion.div>
 
@@ -93,7 +165,7 @@ export default function Home() {
         </motion.div>
 
         {/* Header with Back Button */}
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-2">
           <div className="flex items-center gap-2">
             {selectedCategory && (
               <button 
@@ -103,14 +175,14 @@ export default function Home() {
                 <ChevronLeft className="w-6 h-6" />
               </button>
             )}
-            <h2 className="text-xl font-serif text-stone-800">
+            <h2 className="text-lg font-serif text-stone-800">
               {selectedCategory 
                 ? CATEGORIES.find(c => c.id === selectedCategory)?.label 
-                : searchQuery ? 'Search Results' : 'Browse Collections'}
+                : searchQuery ? 'Search Results' : 'Start With Your Flowers'}
             </h2>
           </div>
           {!selectedCategory && !searchQuery && (
-            <span className="text-xs font-medium text-stone-400 uppercase tracking-wider">
+            <span className="text-[10px] font-thin text-stone-400 tracking-wider">
               {CATEGORIES.length} Categories
             </span>
           )}
@@ -142,7 +214,7 @@ export default function Home() {
               initial={{ opacity: 0, x: 10 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -10 }}
-              className="grid grid-cols-3 gap-3"
+              className="grid grid-cols-3 gap-2"
             >
               {filteredFlowers.map((flower, i) => (
                 <FlowerCard key={flower.id} flower={flower} index={i} onAdd={addFlower} />
@@ -156,6 +228,10 @@ export default function Home() {
           )}
         </AnimatePresence>
       </div>
+      <HowItWorksModal 
+        isOpen={isHowItWorksOpen} 
+        onClose={() => setIsHowItWorksOpen(false)} 
+      />
     </div>
   );
 }

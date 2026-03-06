@@ -119,12 +119,12 @@ export const useStore = create<StoreState>((set, get) => ({
     const wrappingTotal = (state.wrapping?.price || 0) * wrappingMultiplier;
     
     // Delivery handling fee for large/grand
-    const deliveryBase = state.deliverySpeed === 'express' ? 15 : 5;
-    const deliveryHandling = (size === 'large' || size === 'grand') ? 5 : 0;
+    const deliveryBase = state.deliverySpeed === 'express' ? 150 : 50;
+    const deliveryHandling = (size === 'large' || size === 'grand') ? 50 : 0;
     const deliveryTotal = deliveryBase + deliveryHandling;
 
     // Making charges based on style and size
-    const baseMakingCharge = state.bouquetStyle === 'flat_layered' ? 10 : 5;
+    const baseMakingCharge = state.bouquetStyle === 'flat_layered' ? 100 : 50;
     const sizeMultiplier = size === 'small' ? 1 : size === 'medium' ? 1.5 : size === 'large' ? 2 : 3;
     const makingCharge = baseMakingCharge * sizeMultiplier;
 

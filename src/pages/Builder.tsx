@@ -252,18 +252,18 @@ export default function Builder() {
   };
 
   return (
-    <div className="h-full flex flex-col bg-stone-50 relative overflow-hidden">
+    <div className="h-full flex flex-col bg-white relative overflow-hidden">
       {/* Top Header */}
-      <header className="absolute top-0 w-full z-10 px-6 py-4 flex justify-between items-center bg-gradient-to-b from-stone-50/80 to-transparent backdrop-blur-sm">
+      <header className="absolute top-0 w-full z-10 px-6 py-4 flex justify-between items-center bg-gradient-to-b from-white/80 to-transparent backdrop-blur-sm">
         <h1 className="font-serif text-xl text-stone-800">Studio</h1>
         <div className="flex items-center gap-3">
           <div className="bg-white/80 px-3 py-1.5 rounded-full text-sm font-medium text-stone-800 shadow-sm border border-stone-200">
-            ${totalPrice().toFixed(2)}
+            ₹{totalPrice().toFixed(0)}
           </div>
           <button 
             onClick={() => navigate('/ai-preview')}
             disabled={bouquet.length === 0}
-            className="flex items-center gap-1.5 bg-emerald-600 text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-md hover:bg-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-1.5 bg-stone-900 text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-md hover:bg-black transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Wand2 className="w-4 h-4" />
             <span>Preview</span>
@@ -299,7 +299,7 @@ export default function Builder() {
                 </button>
                 <button 
                   onClick={confirmStyleChange}
-                  className="flex-1 py-3 rounded-xl font-medium text-white bg-emerald-600 hover:bg-emerald-700 transition-colors"
+                  className="flex-1 py-3 rounded-xl font-medium text-white bg-stone-900 hover:bg-black transition-colors"
                 >
                   Confirm
                 </button>
@@ -310,14 +310,14 @@ export default function Builder() {
       </AnimatePresence>
 
       {/* Live Preview Area */}
-      <div className="flex-1 relative bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-stone-100 via-stone-50 to-stone-100 pt-16 pb-48">
+      <div className="flex-1 relative bg-white pt-16 pb-48">
         {renderIllustrativeBouquet()}
         
         {/* Style Selection Toggle */}
         <div className="absolute right-4 top-20 bg-white rounded-xl shadow-sm border border-stone-200 p-1 flex flex-col gap-1">
           <button 
             onClick={() => handleStyleChange('round')}
-            className={`p-2 rounded-lg transition-colors flex flex-col items-center gap-1 ${bouquetStyle === 'round' ? 'bg-emerald-50 text-emerald-600' : 'text-stone-400 hover:bg-stone-50'}`}
+            className={`p-2 rounded-lg transition-colors flex flex-col items-center gap-1 ${bouquetStyle === 'round' ? 'bg-stone-100 text-stone-900' : 'text-stone-400 hover:bg-stone-50'}`}
             title="Round Bouquet"
           >
             <Circle className="w-5 h-5" />
@@ -325,7 +325,7 @@ export default function Builder() {
           </button>
           <button 
             onClick={() => handleStyleChange('flat_layered')}
-            className={`p-2 rounded-lg transition-colors flex flex-col items-center gap-1 ${bouquetStyle === 'flat_layered' ? 'bg-emerald-50 text-emerald-600' : 'text-stone-400 hover:bg-stone-50'}`}
+            className={`p-2 rounded-lg transition-colors flex flex-col items-center gap-1 ${bouquetStyle === 'flat_layered' ? 'bg-stone-100 text-stone-900' : 'text-stone-400 hover:bg-stone-50'}`}
             title="Flat Layered Bouquet"
           >
             <Layers className="w-5 h-5" />
@@ -353,13 +353,13 @@ export default function Builder() {
           <div className="flex flex-1">
             <button
               onClick={() => setActiveTab('flowers')}
-              className={`flex-1 pb-3 text-sm font-medium transition-colors border-b-2 ${activeTab === 'flowers' ? 'border-emerald-500 text-emerald-700' : 'border-transparent text-stone-500 hover:text-stone-700'}`}
+              className={`flex-1 pb-3 text-sm font-medium transition-colors border-b-2 ${activeTab === 'flowers' ? 'border-stone-900 text-stone-900' : 'border-transparent text-stone-500 hover:text-stone-700'}`}
             >
               Flowers ({totalItems})
             </button>
             <button
               onClick={() => setActiveTab('wrapping')}
-              className={`flex-1 pb-3 text-sm font-medium transition-colors border-b-2 ${activeTab === 'wrapping' ? 'border-emerald-500 text-emerald-700' : 'border-transparent text-stone-500 hover:text-stone-700'}`}
+              className={`flex-1 pb-3 text-sm font-medium transition-colors border-b-2 ${activeTab === 'wrapping' ? 'border-stone-900 text-stone-900' : 'border-transparent text-stone-500 hover:text-stone-700'}`}
             >
               Wrapping
             </button>
@@ -405,7 +405,7 @@ export default function Builder() {
                   {selectedCategory && (
                     <button 
                       onClick={() => setSelectedCategory(null)}
-                      className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider flex items-center gap-1 hover:text-emerald-700"
+                      className="text-[10px] font-bold text-stone-600 uppercase tracking-wider flex items-center gap-1 hover:text-stone-900"
                     >
                       <ChevronLeft className="w-3 h-3" />
                       Back to Categories

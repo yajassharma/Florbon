@@ -14,14 +14,17 @@ export function BuilderSelectedFlowerItem({ flower, quantity, onUpdateQuantity, 
   const { ref } = useInView({ triggerOnce: true, rootMargin: '100px 0px' });
 
   return (
-    <div ref={ref} className="flex items-center justify-between bg-stone-50 p-3 rounded-xl border border-stone-100">
+    <div ref={ref} className="flex items-center justify-between bg-white p-3 rounded-xl border border-stone-100">
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0 flex items-center justify-center">
           <img src={flower.image} alt={flower.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
         </div>
         <div>
           <p className="text-sm font-medium text-stone-800">{flower.name}</p>
-          <p className="text-xs text-stone-500">${flower.price.toFixed(2)} / stem</p>
+          <div className="flex items-center gap-2 bg-stone-100 px-1.5 py-0.5 rounded-md border border-stone-200 self-start mt-1">
+            <span className="text-xs font-bold text-stone-900">₹{flower.price} / stem</span>
+            <span className="text-[10px] text-stone-400 line-through">₹{flower.mrp}</span>
+          </div>
         </div>
       </div>
       <div className="flex items-center gap-3 bg-white border border-stone-200 rounded-lg p-1">

@@ -12,7 +12,7 @@ export default function MyBouquets() {
   ];
 
   return (
-    <div className="bg-stone-50 min-h-full pb-24">
+    <div className="bg-white min-h-full pb-24">
       <div className="px-6 pt-12 pb-6">
         <h1 className="text-3xl font-serif text-stone-800 mb-2">My Bouquets</h1>
         <p className="text-stone-500 text-sm">Your collection of handcrafted floral designs.</p>
@@ -29,7 +29,7 @@ export default function MyBouquets() {
               className="bg-white rounded-2xl p-4 shadow-sm border border-stone-100 flex items-center justify-between"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                <div className="w-12 h-12 rounded-full bg-stone-100 flex items-center justify-center text-stone-600">
                   <Flower2 size={24} />
                 </div>
                 <div>
@@ -38,8 +38,8 @@ export default function MyBouquets() {
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-sm font-semibold text-stone-900">${bouquet.price.toFixed(2)}</span>
-                <button className="p-2 text-stone-400 hover:text-emerald-600 transition-colors">
+                <span className="text-sm font-semibold text-stone-900">₹{bouquet.price.toFixed(0)}</span>
+                <button className="p-2 text-stone-400 hover:text-stone-900 transition-colors">
                   <ChevronRight size={20} />
                 </button>
               </div>
@@ -54,7 +54,7 @@ export default function MyBouquets() {
             <p className="text-stone-500 text-sm mb-6">Start designing your first masterpiece!</p>
             <button
               onClick={() => navigate('/builder')}
-              className="bg-emerald-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-emerald-700 transition-colors"
+              className="bg-stone-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-black transition-colors"
             >
               Start Building
             </button>

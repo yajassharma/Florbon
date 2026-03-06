@@ -61,7 +61,7 @@ export default function Onboarding() {
 
   if (view === 'splash') {
     return (
-      <div className="h-[100dvh] w-full bg-stone-50 flex flex-col items-center justify-center overflow-hidden relative">
+      <div className="h-[100dvh] w-full bg-white flex flex-col items-center justify-center overflow-hidden relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-rose-500/5 blur-[120px] rounded-full" />
           <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-rose-500/5 blur-[120px] rounded-full" />
@@ -144,18 +144,18 @@ export default function Onboarding() {
         <div className="p-8 pb-12 bg-stone-950">
           <div className="flex items-center justify-between max-w-sm mx-auto w-full">
             <div className="flex gap-2.5">
-              {ONBOARDING_SLIDES.map((_, i) => (
+                  {ONBOARDING_SLIDES.map((_, i) => (
                 <div
                   key={i}
                   className={`h-1.5 rounded-full transition-all duration-500 ${
-                    i === currentSlide ? 'w-10 bg-emerald-500' : 'w-2 bg-stone-700'
+                    i === currentSlide ? 'w-10 bg-white' : 'w-2 bg-stone-700'
                   }`}
                 />
               ))}
             </div>
             <button
               onClick={handleNextSlide}
-              className="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center text-stone-950 shadow-xl shadow-emerald-500/20 active:scale-90 transition-all"
+              className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-stone-950 shadow-xl shadow-white/10 active:scale-90 transition-all"
             >
               <ChevronRight className="w-8 h-8 stroke-[2.5px]" />
             </button>
@@ -166,9 +166,9 @@ export default function Onboarding() {
   }
 
   return (
-    <div className="h-[100dvh] w-full bg-stone-50 flex flex-col overflow-hidden relative">
+    <div className="h-[100dvh] w-full bg-white flex flex-col overflow-hidden relative">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-emerald-500/5 blur-[100px] rounded-full" />
+        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-stone-900/5 blur-[100px] rounded-full" />
       </div>
 
       <div className="flex-1 flex flex-col justify-center px-8 max-w-sm mx-auto w-full z-10">
@@ -196,7 +196,7 @@ export default function Onboarding() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => setAuthMode('signup')}
-              className="w-full bg-emerald-600 text-white py-5 rounded-[2rem] font-bold shadow-xl shadow-emerald-600/20 flex items-center justify-center gap-2 text-lg"
+              className="w-full bg-stone-900 text-white py-5 rounded-[2rem] font-bold shadow-xl shadow-stone-900/20 flex items-center justify-center gap-2 text-lg"
             >
               Get Started <ArrowRight className="w-5 h-5" />
             </motion.button>
@@ -230,7 +230,7 @@ export default function Onboarding() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+1 (555) 000-0000"
-                  className="w-full px-6 py-5 rounded-[2rem] border-2 border-stone-100 focus:border-emerald-500 outline-none transition-all text-xl font-medium bg-white shadow-inner"
+                  className="w-full px-6 py-5 rounded-[2rem] border-2 border-stone-100 focus:border-stone-900 outline-none transition-all text-xl font-medium bg-white shadow-inner"
                   autoFocus
                 />
                 <p className="text-xs text-stone-400 ml-1">
@@ -240,7 +240,7 @@ export default function Onboarding() {
               <button
                 type="submit"
                 disabled={phone.length < 10}
-                className="w-full bg-emerald-600 text-white py-5 rounded-[2rem] font-bold shadow-xl shadow-emerald-600/20 disabled:opacity-50 disabled:shadow-none transition-all text-lg"
+                className="w-full bg-stone-900 text-white py-5 rounded-[2rem] font-bold shadow-xl shadow-stone-900/20 disabled:opacity-50 disabled:shadow-none transition-all text-lg"
               >
                 {authMode === 'signup' ? 'Create Account' : 'Login'}
               </button>

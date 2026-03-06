@@ -261,19 +261,19 @@ export default function AIPreview() {
   };
 
   return (
-    <div className="h-full bg-stone-950 text-white flex flex-col overflow-hidden">
-      <header className="px-6 py-4 flex items-center justify-between z-10">
+    <div className="h-full bg-white text-stone-900 flex flex-col overflow-hidden">
+      <header className="px-6 py-4 flex items-center justify-between z-10 border-b border-stone-100">
         <button 
           onClick={() => navigate('/builder')}
-          className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
+          className="w-10 h-10 rounded-full bg-stone-100 flex items-center justify-center hover:bg-stone-200 transition-colors text-stone-600"
         >
           <ArrowLeft className="w-5 h-5" />
         </button>
-        <h1 className="font-serif text-lg">AI Preview</h1>
+        <h1 className="font-serif text-lg text-stone-800">AI Preview</h1>
         <button 
           onClick={() => setShowIllustration(!showIllustration)}
           disabled={isLoading || !imageUrl}
-          className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${showIllustration ? 'bg-emerald-500 text-white' : 'bg-white/10 hover:bg-white/20'}`}
+          className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${showIllustration ? 'bg-stone-900 text-white' : 'bg-stone-100 text-stone-600 hover:bg-stone-200'}`}
           title="Compare with illustration"
         >
           <SplitSquareHorizontal className="w-5 h-5" />
@@ -283,15 +283,15 @@ export default function AIPreview() {
       <main className="flex-1 flex flex-col items-center justify-center p-6 relative">
         {isLoading ? (
           <div className="flex flex-col items-center gap-4">
-            <Loader2 className="w-10 h-10 text-emerald-400 animate-spin" />
+            <Loader2 className="w-10 h-10 text-stone-300 animate-spin" />
             <p className="text-stone-400 text-sm animate-pulse">Crafting your realistic preview...</p>
           </div>
         ) : error ? (
-          <div className="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-6 text-center max-w-sm">
-            <p className="text-rose-400 mb-4">{error}</p>
+          <div className="bg-rose-50 border border-rose-100 rounded-2xl p-6 text-center max-w-sm">
+            <p className="text-rose-600 mb-4">{error}</p>
             <button 
               onClick={generatePreview}
-              className="bg-rose-500 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-rose-600"
+              className="bg-rose-600 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-rose-700"
             >
               Try Again
             </button>
@@ -310,7 +310,7 @@ export default function AIPreview() {
               />
             )}
             <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/80 to-transparent p-6 pt-20">
-              <div className="flex items-center gap-2 text-emerald-400 mb-2">
+              <div className="flex items-center gap-2 text-stone-400 mb-2">
                 <CheckCircle2 className="w-4 h-4" />
                 <span className="text-xs font-medium uppercase tracking-wider">
                   {showIllustration ? 'Illustration' : 'Realistic Preview'}
@@ -325,11 +325,11 @@ export default function AIPreview() {
         ) : null}
       </main>
 
-      <footer className="p-6 bg-stone-900 border-t border-stone-800 flex gap-4">
+      <footer className="p-6 bg-white border-t border-stone-100 flex gap-4">
         <button 
           onClick={generatePreview}
           disabled={isLoading}
-          className="flex-1 bg-stone-800 text-white py-4 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-stone-700 transition-colors disabled:opacity-50"
+          className="flex-1 bg-stone-100 text-stone-900 py-4 rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-stone-200 transition-colors disabled:opacity-50"
         >
           <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
           Regenerate
@@ -340,7 +340,7 @@ export default function AIPreview() {
             navigate('/checkout');
           }}
           disabled={isLoading || !imageUrl}
-          className="flex-1 bg-emerald-500 text-white py-4 rounded-xl font-medium hover:bg-emerald-600 transition-colors shadow-lg shadow-emerald-500/20 disabled:opacity-50"
+          className="flex-1 bg-stone-900 text-white py-4 rounded-xl font-medium hover:bg-black transition-colors shadow-lg shadow-stone-900/20 disabled:opacity-50"
         >
           Approve & Checkout
         </button>

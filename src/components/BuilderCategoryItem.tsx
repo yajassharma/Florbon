@@ -11,7 +11,7 @@ export function BuilderCategoryItem({ label, image, onClick }: BuilderCategoryIt
   return (
     <button 
       onClick={onClick}
-      className="w-full border border-stone-200 rounded-xl p-2 flex items-center gap-3 hover:bg-stone-50 transition-colors group"
+      className="w-full border border-stone-200 rounded-xl p-2 flex items-center gap-3 hover:bg-stone-100 transition-colors group"
     >
       <div className="w-12 h-12 rounded-lg overflow-hidden bg-stone-100 flex-shrink-0">
         <img src={image} alt={label} className="w-full h-full object-contain" referrerPolicy="no-referrer" />

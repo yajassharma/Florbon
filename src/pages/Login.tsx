@@ -27,7 +27,7 @@ export default function Login() {
   };
 
   return (
-    <div className="h-[100dvh] w-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-emerald-50 to-white overflow-hidden">
+    <div className="h-[100dvh] w-full flex flex-col items-center justify-center p-6 bg-gradient-to-b from-stone-50 to-white overflow-hidden">
       <motion.div 
         initial={{ scale: 0.9, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -56,13 +56,13 @@ export default function Login() {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="+1 (555) 000-0000"
-                className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all"
+                className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-stone-900 focus:border-stone-900 outline-none transition-all"
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-emerald-600 text-white py-3 rounded-xl font-medium hover:bg-emerald-700 transition-colors"
+              className="w-full bg-stone-900 text-white py-3 rounded-xl font-medium hover:bg-black transition-colors"
             >
               Continue
             </button>
@@ -78,13 +78,13 @@ export default function Login() {
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="1234"
                 maxLength={4}
-                className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all text-center tracking-widest text-xl"
+                className="w-full px-4 py-3 rounded-xl border border-stone-200 focus:ring-2 focus:ring-stone-900 focus:border-stone-900 outline-none transition-all text-center tracking-widest text-xl"
                 required
               />
             </div>
             <button
               type="submit"
-              className="w-full bg-emerald-600 text-white py-3 rounded-xl font-medium hover:bg-emerald-700 transition-colors"
+              className="w-full bg-stone-900 text-white py-3 rounded-xl font-medium hover:bg-black transition-colors"
             >
               Verify & Login
             </button>

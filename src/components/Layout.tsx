@@ -4,6 +4,7 @@ import { Home, PlusCircle, ShoppingBag, User, Flower2 } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { useStore } from '../store/useStore';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FallingPetals } from './FallingPetals';
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -40,21 +41,21 @@ export default function Layout() {
         onClick={() => navigate(item.path)}
         className={cn(
           "flex flex-col items-center relative transition-all duration-500 py-2 group",
-          isActive ? "text-emerald-600" : "text-stone-400 hover:text-stone-600"
+          isActive ? "text-black" : "text-stone-400 hover:text-stone-600"
         )}
       >
         <div className="relative">
           {isActive && (
             <motion.div
               layoutId="activeGlow"
-              className="absolute inset-0 bg-emerald-500/10 blur-md rounded-full scale-150"
+              className="absolute inset-0 bg-stone-900/5 blur-md rounded-full scale-150"
             />
           )}
           <div className={cn(
             "relative z-10 transition-all duration-500",
             isActive ? "scale-110" : ""
           )}>
-            <Icon size={26} strokeWidth={isActive ? 2.5 : 2} />
+            <Icon size={26} strokeWidth={isActive ? 2 : 1.5} />
           </div>
           {item.badge ? (
             <motion.span 
@@ -66,25 +67,19 @@ export default function Layout() {
             </motion.span>
           ) : null}
         </div>
-        {isActive && (
-          <motion.div 
-            layoutId="activeIndicator"
-            className="absolute -bottom-0.5 w-1 h-1 bg-emerald-500 rounded-full"
-          />
-        )}
       </button>
     );
   };
 
   return (
-    <div className="h-[100dvh] w-full bg-stone-100 flex justify-center overflow-hidden">
+    <div className="h-[100dvh] w-full bg-white flex justify-center overflow-hidden">
       <AnimatePresence>
         {showSplash && (
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
-            className="fixed inset-0 z-[100] bg-stone-50 flex flex-col items-center justify-center"
+            className="fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center"
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
@@ -113,11 +108,11 @@ export default function Layout() {
       </AnimatePresence>
 
       <div className="w-full sm:max-w-md bg-white h-full shadow-2xl relative flex flex-col overflow-hidden">
+        <FallingPetals />
         {/* Background Blobs for Glassmorphism */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-[20%] left-[-20%] w-[80%] h-[40%] bg-emerald-400/10 blur-[100px] rounded-full animate-pulse" />
-          <div className="absolute bottom-[10%] right-[-20%] w-[80%] h-[40%] bg-rose-400/10 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-[50%] right-[-10%] w-[60%] h-[30%] bg-blue-400/10 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-[20%] left-[-20%] w-[80%] h-[40%] bg-stone-200/20 blur-[100px] rounded-full animate-pulse" />
+          <div className="absolute bottom-[10%] right-[-20%] w-[80%] h-[40%] bg-stone-300/20 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
         </div>
 
         <main className="flex-1 overflow-y-auto pb-32 hide-scrollbar relative z-10">
@@ -130,15 +125,15 @@ export default function Layout() {
               {/* Central Floating Logo Button */}
               <div className="relative -mb-8 z-20 pointer-events-auto">
                 {/* Subtle Glow */}
-                <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full scale-125 animate-pulse" />
+                <div className="absolute inset-0 bg-stone-900/10 blur-2xl rounded-full scale-125" />
                 
                 <button
                   onClick={() => navigate('/builder')}
                   className={cn(
-                    "w-18 h-18 rounded-full flex items-center justify-center transition-all duration-700 shadow-xl border border-white/50 backdrop-blur-xl relative overflow-hidden group p-3",
+                    "w-18 h-18 rounded-full flex items-center justify-center transition-all duration-700 shadow-2xl border border-white/50 backdrop-blur-2xl relative overflow-hidden group p-3",
                     location.pathname === '/builder' 
-                      ? "bg-emerald-600 scale-110" 
-                      : "bg-white/30 hover:bg-white"
+                      ? "bg-stone-900 scale-110" 
+                      : "bg-white/40 hover:bg-white"
                   )}
                 >
                   <img 

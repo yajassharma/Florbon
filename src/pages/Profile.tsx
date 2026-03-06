@@ -14,7 +14,7 @@ export default function Profile() {
         <p className="text-stone-500 mb-6">Login to view your profile and order history.</p>
         <button 
           onClick={() => navigate('/login')}
-          className="bg-emerald-600 text-white px-8 py-3 rounded-full font-medium hover:bg-emerald-700 transition-colors"
+          className="bg-stone-900 text-white px-8 py-3 rounded-full font-medium hover:bg-black transition-colors"
         >
           Login
         </button>
@@ -30,10 +30,10 @@ export default function Profile() {
   ];
 
   return (
-    <div className="h-full bg-stone-50">
+    <div className="h-full bg-white">
       <header className="bg-white px-6 py-8 border-b border-stone-200">
         <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-700 font-serif text-2xl">
+          <div className="w-16 h-16 bg-stone-100 rounded-full flex items-center justify-center text-stone-700 font-serif text-2xl">
             {user.name?.[0] || 'U'}
           </div>
           <div>
@@ -48,7 +48,7 @@ export default function Profile() {
           {menuItems.map((item, i) => (
             <button 
               key={item.label}
-              className={`w-full flex items-center justify-between p-4 hover:bg-stone-50 transition-colors ${i !== menuItems.length - 1 ? 'border-b border-stone-100' : ''}`}
+              className={`w-full flex items-center justify-between p-4 hover:bg-stone-100 transition-colors ${i !== menuItems.length - 1 ? 'border-b border-stone-100' : ''}`}
             >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-500">
