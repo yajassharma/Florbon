@@ -87,7 +87,7 @@ export default function Layout() {
               transition={{ duration: 1, ease: "easeOut" }}
               className="relative"
             >
-              <div className="absolute inset-0 bg-rose-500/10 blur-3xl rounded-full scale-150" />
+              <div className="absolute inset-0 bg-rose-500/10 blur-xl rounded-full scale-150" />
               <img 
                 src="https://ik.imagekit.io/b6vbf9pul/Group_345-removebg-preview%202.png"
                 alt="Florbon Logo"

@@ -22,7 +22,7 @@ export function FallingPetals() {
       duration: Math.random() * 12 + 8, // 8s to 20s
       delay: Math.random() * 10,
       rotation: Math.random() * 360,
-      opacity: Math.random() * 0.12 + 0.03, // very light: 0.03 to 0.15
+      opacity: Math.random() * 0.7 + 0.5, // very light: 0.03 to 0.15
     }));
     setPetals(newPetals);
   }, []);

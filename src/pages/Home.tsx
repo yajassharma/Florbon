@@ -16,12 +16,12 @@ const HERO_SLIDES = [
   },
   {
     image: 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1000&auto=format&fit=crop',
-    heading: "Elegance in Every Petal",
+    heading: "Elegance in Every Petal...",
     subheading: "Discover our premium collection of seasonal blooms."
   },
   {
     image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=1000&auto=format&fit=crop',
-    heading: "Crafted for Your Moments",
+    heading: "Crafted for Your Moments...",
     subheading: "Personalized arrangements that speak from the heart."
   }
 ];
