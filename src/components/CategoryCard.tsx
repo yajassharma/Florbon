@@ -16,9 +16,9 @@ export function CategoryCard({ label, image, onClick, index }: CategoryCardProps
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.1 + index * 0.03 }}
       onClick={onClick}
-      className="group bg-gradient-to-br from-[#fff7f2] via-[#fffaf6] to-[#fdf3ec] rounded-xl p-3 shadow-xl border border-stone-100 flex flex-col hover:shadow-md transition-all cursor-pointer overflow-hidden"
+      className="group bg-gradient-to-br from-[#fff7f2] via-[#fffaf6] to-[#fdf3ec] rounded-xl p-2 shadow-xl border border-stone-100 flex flex-col hover:shadow-md transition-all cursor-pointer overflow-hidden"
     >
-      <div className="h-46 rounded-lg overflow-hidden mb-3 bg-stone-100 relative">
+      <div className="h-46 rounded-lg overflow-hidden mb-2 bg-stone-100 relative">
         <img
           src={image}
           alt={label}

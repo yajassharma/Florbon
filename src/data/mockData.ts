@@ -76,9 +76,9 @@ export const FLOWERS: Flower[] = [
   { id: 'green-fern', name: 'Leatherleaf Fern', type: 'green', role: 'foliage', color: 'green', price: 20, mrp: 25, image: 'https://ik.imagekit.io/b6vbf9pul/Leatherleaf%20Fern.png?updatedAt=1772751108418', stock: 200 },
   { id: 'green-dusty', name: 'Dusty Miller', type: 'green', role: 'foliage', color: 'silver', price: 25, mrp: 30, image: 'https://ik.imagekit.io/b6vbf9pul/Dusty%20Miller.png?updatedAt=1772751108288', stock: 150 },
   { id: 'green-monstera', name: 'Monstera Leaf', type: 'green', role: 'foliage', color: 'green', price: 40, mrp: 50, image: 'https://ik.imagekit.io/b6vbf9pul/Monstera%20Leaf.png?updatedAt=1772751108159', stock: 100 },
+  { id: 'green-babysbreath', name: 'Baby\'s Breath', type: 'green', role: 'foliage', color: 'white', price: 30, mrp: 35, image: 'https://ik.imagekit.io/b6vbf9pul/Gemini_Generated_Image_k04fv8k04fv8k04f.png', stock: 200 },
 
   // Fillers (Adjusting price scale)
-  { id: 'filler-babysbreath', name: 'Baby\'s Breath', type: 'filler', role: 'filler', color: 'white', price: 30, mrp: 35, image: 'https://images.unsplash.com/photo-1552689486-f6773047d19f?auto=format&fit=crop&w=800&q=80', stock: 200 },
   { id: 'filler-waxflower', name: 'Pink Waxflower', type: 'filler', role: 'filler', color: 'pink', price: 35, mrp: 40, image: 'https://images.unsplash.com/photo-1507290439931-a861b5a38200?auto=format&fit=crop&w=800&q=80', stock: 150 },
   { id: 'filler-statice', name: 'Purple Statice', type: 'filler', role: 'filler', color: 'purple', price: 25, mrp: 30, image: 'https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=800&q=80', stock: 150 },
   { id: 'filler-thistle', name: 'Blue Thistle', type: 'filler', role: 'filler', color: 'blue', price: 40, mrp: 45, image: 'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=800&q=80', stock: 150 },

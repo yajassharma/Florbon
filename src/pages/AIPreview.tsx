@@ -21,6 +21,7 @@ export default function AIPreview() {
     setShowIllustration(false);
     
     try {
+      const totalFlowers = bouquet.reduce((sum, item) => sum + item.quantity, 0);
       const flowerDetails = bouquet.map(item => `${item.quantity} ${item.flower.color} ${item.flower.name}`).join(', ');
       const wrappingDetail = wrapping ? `wrapped in ${wrapping.color} ${wrapping.name}` : 'unwrapped';
       
@@ -42,7 +43,11 @@ export default function AIPreview() {
         sizePrompt = "an oversized luxury bouquet covering the torso while being held";
       }
 
-      const prompt = `A highly realistic, professional studio photography of ${sizePrompt} containing ${flowerDetails}. Style: ${stylePrompt}. Wrapping: ${wrappingDetail}. 
+      const exactCountPrompt = totalFlowers <= 5 
+        ? `CRITICAL INSTRUCTION: The image MUST show EXACTLY ${totalFlowers} individual flower(s) in total (${flowerDetails}). This is a strict requirement. Do not generate a full bouquet, just exactly ${totalFlowers} flower(s).` 
+        : `containing ${flowerDetails}`;
+
+      const prompt = `A highly realistic, professional studio photography of ${sizePrompt}. ${exactCountPrompt}. Style: ${stylePrompt}. Wrapping: ${wrappingDetail}. 
       A person holding the bouquet for size comparison. The bouquet remains the primary focus. The person acts only as a scale reference. Face should not dominate the frame, waist-up framing only. Neutral clothing, soft or blurred background, hands positioned naturally holding bouquet from bottom. 
       Soft natural lighting, elegant composition, premium floral design, 8k resolution, highly detailed.`;
       
